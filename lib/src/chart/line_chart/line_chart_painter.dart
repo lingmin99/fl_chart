@@ -449,7 +449,6 @@ class LineChartPainter extends AxisChartPainter {
         x -=  (tp.width / 2) * (1- textAlignment.x) + leftTitles.margin;
         y -= (tp.height / 2) * (1- textAlignment.y);
 
-         //lm注释 原为: y -= tp.height/2;
         tp.paint(canvas, Offset(x, y));
 
         verticalSeek += data.gridData.verticalInterval;
@@ -522,6 +521,10 @@ class LineChartPainter extends AxisChartPainter {
         Alignment textAlignment = data.titlesData.bottomTitles.textAlignment;
         x -=  (tp.width / 2) * (1- textAlignment.x);
         y -= (tp.height / 2) * (1- textAlignment.y) + bottomTitles.margin;
+
+        if((x + tp.width) > viewSize.width){
+          x = x - tp.width;
+        }
 
         tp.paint(canvas, Offset(x, y));
 

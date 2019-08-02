@@ -97,14 +97,14 @@ class LineChartSample1State extends State<LineChartSample1> {
                           textStyle: TextStyle(
                             color: Color(0xff75729e),
                             fontWeight: FontWeight.bold,
-                            fontSize: 14,
+                            fontSize: 10,
                           ),
                           getTitles: (value) {
                             switch(value.toInt()) {
-                              case 1: return '1m';
-                              case 2: return '2m';
-                              case 3: return '3m';
-                              case 4: return '5m';
+                              case 1: return '100m';
+                              case 2: return '200m';
+                              case 3: return '300m';
+                              case 4: return '500m';
                             }
                             return '';
                           },

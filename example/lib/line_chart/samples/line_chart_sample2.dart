@@ -17,7 +17,7 @@ class LineChartSample2 extends StatelessWidget {
           color: Color(0xff232d37)
         ),
         child: Padding(
-          padding: const EdgeInsets.only(right: 18.0, left: 12.0, top: 24, bottom: 12),
+          padding: const EdgeInsets.only(right: 0.0, left: 0.0, top: 24, bottom: 12),
           child: FlChart(
             chart: LineChart(
               LineChartData(
@@ -53,7 +53,8 @@ class LineChartSample2 extends StatelessWidget {
 //                        case 5: return 'JUN';
 //                        case 8: return 'SEP';
 //                      }
-                    if (value.toString() == "0.123456")
+                    print(value.toString());
+                    if (value.toString() == "0.123456" || value.toString() == "6.123456")
                       return value.toString();
                     },
                     margin: 0,
@@ -74,7 +75,7 @@ class LineChartSample2 extends StatelessWidget {
 //                      }
                       return value.toString();
                     },
-                    reservedSize: 28,
+                    reservedSize: 50,
                     margin: 0,
                     textAlignment: Alignment.topRight
                   ),
@@ -84,23 +85,24 @@ class LineChartSample2 extends StatelessWidget {
                   border: Border.all(color: Color(0xff37434d), width: 1)
                 ),
 //                minX: 0,
-//                maxX: 11,
+//                maxX: 10.123456,
                 minY: 0,
 //                maxY: 6,
                 lineBarsData: [
                   LineChartBarData(
                     spots: [
-                      FlSpot(0.123456, 3),
-                      FlSpot(2.123456, 2),
-                      FlSpot(4.9, 5),
-                      FlSpot(6.8, 3.1),
-                      FlSpot(8, 4),
-                      FlSpot(9.5, 3),
-                      FlSpot(11, 4),
+                      FlSpot(0.123456, 12),
+                      FlSpot(2.123456, 15),
+                      FlSpot(4.9, 12),
+                      FlSpot(3, 0),
+                      //FlSpot(6.8, 3.1),
+                      //FlSpot(8, 4),
+                      //FlSpot(9.5, 3),
+                      FlSpot(6.123456, 10),
                     ],
                     isCurved: true,
                     colors: gradientColors,
-                    barWidth: 5,
+                    barWidth: 1,
                     isStrokeCapRound: true,
                     dotData: FlDotData(
                       show: false,
