@@ -23,7 +23,7 @@ class LineChartSample2 extends StatelessWidget {
               LineChartData(
                 gridData: FlGridData(
                   show: true,
-                  drawHorizontalGrid: true,
+                  drawHorizontalGrid: false,
                   getDrawingVerticalGridLine: (value) {
                     return const FlLine(
                       color: Color(0xff37434d),
@@ -44,19 +44,20 @@ class LineChartSample2 extends StatelessWidget {
                     reservedSize: 22,
                     textStyle: TextStyle(
                       color: const Color(0xff68737d),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16
+                     //fontWeight: FontWeight.bold,
+                    fontSize: 10
                     ),
                     getTitles: (value) {
-                      switch(value.toInt()) {
-                        case 2: return 'MAR';
-                        case 5: return 'JUN';
-                        case 8: return 'SEP';
-                      }
-
-                      return '';
+//                      switch(value.toInt()) {
+//                        case 2: return 'MAR';
+//                        case 5: return 'JUN';
+//                        case 8: return 'SEP';
+//                      }
+                    if (value.toString() == "0.123456")
+                      return value.toString();
                     },
-                    margin: 8,
+                    margin: 0,
+                    textAlignment: Alignment.bottomRight,
                   ),
                   leftTitles: SideTitles(
                     showTitles: true,
@@ -66,30 +67,31 @@ class LineChartSample2 extends StatelessWidget {
                       fontSize: 15,
                     ),
                     getTitles: (value) {
-                      switch(value.toInt()) {
-                        case 1: return '10k';
-                        case 3: return '30k';
-                        case 5: return '50k';
-                      }
-                      return '';
+//                      switch(value.toInt()) {
+//                        case 1: return '10k';
+//                        case 3: return '30k';
+//                        case 5: return '50k';
+//                      }
+                      return value.toString();
                     },
                     reservedSize: 28,
-                    margin: 12,
+                    margin: 0,
+                    textAlignment: Alignment.topRight
                   ),
                 ),
                 borderData: FlBorderData(
                   show: true,
                   border: Border.all(color: Color(0xff37434d), width: 1)
                 ),
-                minX: 0,
-                maxX: 11,
+//                minX: 0,
+//                maxX: 11,
                 minY: 0,
-                maxY: 6,
+//                maxY: 6,
                 lineBarsData: [
                   LineChartBarData(
                     spots: [
-                      FlSpot(0, 3),
-                      FlSpot(2.6, 2),
+                      FlSpot(0.123456, 3),
+                      FlSpot(2.123456, 2),
                       FlSpot(4.9, 5),
                       FlSpot(6.8, 3.1),
                       FlSpot(8, 4),

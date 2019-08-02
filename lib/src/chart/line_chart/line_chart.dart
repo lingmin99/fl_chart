@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:fl_chart/src/chart/base/axis_chart/axis_chart.dart';
 import 'package:fl_chart/src/chart/base/base_chart/base_chart_data.dart';
 import 'package:fl_chart/src/chart/base/base_chart/base_chart_painter.dart';

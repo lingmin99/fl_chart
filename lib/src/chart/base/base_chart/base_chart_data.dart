@@ -92,6 +92,7 @@ class SideTitles {
   final double reservedSize;
   final TextStyle textStyle;
   final double margin;
+  final Alignment textAlignment;
 
   const SideTitles({
     this.showTitles = false,
@@ -102,6 +103,8 @@ class SideTitles {
       fontSize: 11,
     ),
     this.margin = 6,
+    this.textAlignment = Alignment.center,
+
   });
 }
 

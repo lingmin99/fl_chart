@@ -140,6 +140,7 @@ class LineChartPainter extends AxisChartPainter {
     return null;
   }
 
+  //画传入的坐标点
   void drawDots(Canvas canvas, Size viewSize, LineChartBarData barData) {
     if (!barData.dotData.show) {
       return;
@@ -422,6 +423,7 @@ class LineChartPainter extends AxisChartPainter {
     }
   }
 
+  //画坐标刻度显示的值
   void drawTitles(Canvas canvas, Size viewSize) {
     if (!data.titlesData.show) {
       return;
@@ -429,7 +431,7 @@ class LineChartPainter extends AxisChartPainter {
     viewSize = getChartUsableDrawSize(viewSize);
 
     // Left Titles
-    final leftTitles = data.titlesData.leftTitles;
+    final leftTitles = data.titlesData.leftTitles;//Y轴刻度
     if (leftTitles.showTitles) {
       double verticalSeek = data.minY;
       while (verticalSeek <= data.maxY) {
@@ -442,8 +444,12 @@ class LineChartPainter extends AxisChartPainter {
         final TextPainter tp = TextPainter(
             text: span, textAlign: TextAlign.center, textDirection: TextDirection.ltr);
         tp.layout(maxWidth: getExtraNeededHorizontalSpace());
-        x -= tp.width + leftTitles.margin;
-        y -= tp.height / 2;
+        final Alignment textAlignment = data.titlesData.leftTitles.textAlignment;
+
+        x -=  (tp.width / 2) * (1- textAlignment.x) + leftTitles.margin;
+        y -= (tp.height / 2) * (1- textAlignment.y);
+
+         //lm注释 原为: y -= tp.height/2;
         tp.paint(canvas, Offset(x, y));
 
         verticalSeek += data.gridData.verticalInterval;
@@ -452,7 +458,7 @@ class LineChartPainter extends AxisChartPainter {
 
 
     // Top titles
-    final topTitles = data.titlesData.topTitles;
+    final topTitles = data.titlesData.topTitles;//顶部刻度
     if (topTitles.showTitles) {
       double horizontalSeek = data.minX;
       while (horizontalSeek <= data.maxX) {
@@ -465,8 +471,8 @@ class LineChartPainter extends AxisChartPainter {
         TextPainter tp = TextPainter(
           text: span, textAlign: TextAlign.center, textDirection: TextDirection.ltr);
         tp.layout();
-
         x -= tp.width / 2;
+
         y -= topTitles.margin + tp.height;
 
         tp.paint(canvas, Offset(x, y));
@@ -476,7 +482,7 @@ class LineChartPainter extends AxisChartPainter {
     }
 
     // Right Titles
-    final rightTitles = data.titlesData.rightTitles;
+    final rightTitles = data.titlesData.rightTitles;//右边刻度值
     if (rightTitles.showTitles) {
       double verticalSeek = data.minY;
       while (verticalSeek <= data.maxY) {
@@ -498,9 +504,9 @@ class LineChartPainter extends AxisChartPainter {
     }
 
     // Bottom titles
-    final bottomTitles = data.titlesData.bottomTitles;
+    final bottomTitles = data.titlesData.bottomTitles;//x轴刻度值数组（底部）
     if (bottomTitles.showTitles) {
-      double horizontalSeek = data.minX;
+      double horizontalSeek = data.minX;//最小X轴值
       while (horizontalSeek <= data.maxX) {
         double x = getPixelX(horizontalSeek, viewSize);
         double y = viewSize.height + getTopOffsetDrawSize();
@@ -512,8 +518,10 @@ class LineChartPainter extends AxisChartPainter {
             text: span, textAlign: TextAlign.center, textDirection: TextDirection.ltr);
         tp.layout();
 
-        x -= tp.width / 2;
-        y += bottomTitles.margin;
+
+        Alignment textAlignment = data.titlesData.bottomTitles.textAlignment;
+        x -=  (tp.width / 2) * (1- textAlignment.x);
+        y -= (tp.height / 2) * (1- textAlignment.y) + bottomTitles.margin;
 
         tp.paint(canvas, Offset(x, y));
 

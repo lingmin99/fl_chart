@@ -75,7 +75,7 @@ abstract class BaseChartPainter<D extends BaseChartData> extends CustomPainter {
   /// is the needed space to draw horizontal and vertical
   /// stuff around our chart.
   /// then we subtract them from raw [viewSize]
-  Size getChartUsableDrawSize(Size viewSize) {
+  Size getChartUsableDrawSize(Size viewSize) {//获取图表可用尺寸
     double usableWidth = viewSize.width - getExtraNeededHorizontalSpace();
     double usableHeight = viewSize.height - getExtraNeededVerticalSpace();
     return Size(usableWidth, usableHeight);
