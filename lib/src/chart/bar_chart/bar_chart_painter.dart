@@ -202,6 +202,7 @@ class BarChartPainter extends AxisChartPainter {
     });
   }
 
+  //绘制显示的文字（刻度值）
   void drawTitles(Canvas canvas, Size viewSize, List<GroupBarsPosition> groupBarsPosition) {
     if (!data.titlesData.show) {
       return;

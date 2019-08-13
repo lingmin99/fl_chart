@@ -77,17 +77,17 @@ FlLine defaultGridLine(double value) {
 /// This class is responsible to hold grid data,
 /// the field names are descriptive and you can find out what they do.
 class FlGridData {
-  final bool show;
+  final bool show;//是否显示网格线
 
   // Horizontal
-  final bool drawHorizontalGrid;
-  final double horizontalInterval;
-  final GetDrawingGridLine getDrawingHorizontalGridLine;
+  final bool drawHorizontalGrid;//是否绘制水平网格
+  final double horizontalInterval;//水平间隔
+  final GetDrawingGridLine getDrawingHorizontalGridLine;//网线设置（粗细，颜色等）
   final CheckToShowGrid checkToShowHorizontalGrid;
 
   // Vertical
-  final bool drawVerticalGrid;
-  final double verticalInterval;
+  final bool drawVerticalGrid;//是否绘制垂直网格
+  final double verticalInterval;//垂直间隔
   final GetDrawingGridLine getDrawingVerticalGridLine;
   final CheckToShowGrid checkToShowVerticalGrid;
 

@@ -22,7 +22,7 @@ class LineChartSample2 extends StatelessWidget {
             chart: LineChart(
               LineChartData(
                 gridData: FlGridData(
-                  show: true,
+                  show: false,
                   drawHorizontalGrid: false,
                   getDrawingVerticalGridLine: (value) {
                     return const FlLine(
@@ -64,16 +64,22 @@ class LineChartSample2 extends StatelessWidget {
                     showTitles: true,
                     textStyle: TextStyle(
                       color: const Color(0xff67727d),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
+                      //fontWeight: FontWeight.bold,
+                      fontSize: 10,
                     ),
                     getTitles: (value) {
+                      if(value.toDouble() == 0.0) {
+                        return value.toString();
+                      }else if(value.toDouble() == 100)
+                        {
+                          return "19900";
+                        }
 //                      switch(value.toInt()) {
 //                        case 1: return '10k';
 //                        case 3: return '30k';
 //                        case 5: return '50k';
 //                      }
-                      return value.toString();
+                      //return value.toString();
                     },
                     reservedSize: 50,
                     margin: 0,
@@ -91,7 +97,7 @@ class LineChartSample2 extends StatelessWidget {
                 lineBarsData: [
                   LineChartBarData(
                     spots: [
-                      FlSpot(0.123456, 12),
+                      FlSpot(0.123456, 120),
                       FlSpot(2.123456, 15),
                       FlSpot(4.9, 12),
                       FlSpot(3, 0),

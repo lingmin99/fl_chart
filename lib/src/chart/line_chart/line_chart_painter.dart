@@ -431,7 +431,7 @@ class LineChartPainter extends AxisChartPainter {
     viewSize = getChartUsableDrawSize(viewSize);
 
     // Left Titles
-    final leftTitles = data.titlesData.leftTitles;//Y轴刻度
+    final leftTitles = data.titlesData.leftTitles;//左边(Y)轴刻度
     if (leftTitles.showTitles) {
       double verticalSeek = data.minY;
       while (verticalSeek <= data.maxY) {
@@ -448,7 +448,6 @@ class LineChartPainter extends AxisChartPainter {
 
         x -=  (tp.width / 2) * (1- textAlignment.x) + leftTitles.margin;
         y -= (tp.height / 2) * (1- textAlignment.y);
-
         tp.paint(canvas, Offset(x, y));
 
         verticalSeek += data.gridData.verticalInterval;
