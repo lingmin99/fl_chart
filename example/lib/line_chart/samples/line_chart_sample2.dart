@@ -72,7 +72,7 @@ class LineChartSample2 extends StatelessWidget {
                         return value.toString();
                       }else if(value.toDouble() == 100)
                         {
-                          return "19900";
+                          return "199004444567";
                         }
 //                      switch(value.toInt()) {
 //                        case 1: return '10k';
@@ -81,14 +81,22 @@ class LineChartSample2 extends StatelessWidget {
 //                      }
                       //return value.toString();
                     },
-                    reservedSize: 50,
+                    reservedSize: 0,
                     margin: 0,
                     textAlignment: Alignment.topRight
                   ),
                 ),
                 borderData: FlBorderData(
-                  show: true,
-                  border: Border.all(color: Color(0xff37434d), width: 1)
+                    show: true,
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Color(0xff4e4965),
+                        width: 1,
+                      ),
+                      left: BorderSide(
+                        width: 1,
+                        color: Colors.transparent,
+                      ),)
                 ),
 //                minX: 0,
 //                maxX: 10.123456,

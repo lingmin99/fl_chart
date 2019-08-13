@@ -429,7 +429,6 @@ class LineChartPainter extends AxisChartPainter {
       return;
     }
     viewSize = getChartUsableDrawSize(viewSize);
-
     // Left Titles
     final leftTitles = data.titlesData.leftTitles;//左边(Y)轴刻度
     if (leftTitles.showTitles) {
@@ -443,13 +442,17 @@ class LineChartPainter extends AxisChartPainter {
         final TextSpan span = TextSpan(style: leftTitles.textStyle, text: text);
         final TextPainter tp = TextPainter(
             text: span, textAlign: TextAlign.center, textDirection: TextDirection.ltr);
-        tp.layout(maxWidth: getExtraNeededHorizontalSpace());
         final Alignment textAlignment = data.titlesData.leftTitles.textAlignment;
+        if(textAlignment.x > -1){//不在y轴坐标线左边
+          tp.layout();//设置文字布局占的最大宽度
+        }else{
+          tp.layout(maxWidth: getExtraNeededHorizontalSpace());//设置文字布局占的最大宽度
+        }
 
         x -=  (tp.width / 2) * (1- textAlignment.x) + leftTitles.margin;
         y -= (tp.height / 2) * (1- textAlignment.y);
         tp.paint(canvas, Offset(x, y));
-
+        print(tp.width);
         verticalSeek += data.gridData.verticalInterval;
       }
     }
@@ -578,7 +581,7 @@ class LineChartPainter extends AxisChartPainter {
   /// the left space is [getLeftOffsetDrawSize],
   /// and the whole space is [getExtraNeededHorizontalSpace]
   @override
-  double getExtraNeededHorizontalSpace() {
+  double getExtraNeededHorizontalSpace() {//预留水平空间（为绘制文字留有的),如果文字不显示则不预留此空间
     double sum = super.getExtraNeededHorizontalSpace();
     if (data.titlesData.show) {
 
@@ -602,7 +605,7 @@ class LineChartPainter extends AxisChartPainter {
   /// the top space is [getTopOffsetDrawSize()],
   /// and the whole space is [getExtraNeededVerticalSpace]
   @override
-  double getExtraNeededVerticalSpace() {
+  double getExtraNeededVerticalSpace() {//整个垂直空间（为绘制文字留有的）
     double sum = super.getExtraNeededVerticalSpace();
     if (data.titlesData.show) {
 
