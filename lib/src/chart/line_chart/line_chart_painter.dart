@@ -452,7 +452,6 @@ class LineChartPainter extends AxisChartPainter {
         x -=  (tp.width / 2) * (1- textAlignment.x) + leftTitles.margin;
         y -= (tp.height / 2) * (1- textAlignment.y);
         tp.paint(canvas, Offset(x, y));
-        print(tp.width);
         verticalSeek += data.gridData.verticalInterval;
       }
     }
